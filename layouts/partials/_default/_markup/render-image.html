@@ -55,7 +55,7 @@ image size, as Hugo will upscale small images */}}
           srcset="{{with $large.RelPermalink }}{{.}}{{ end }}">
 
       <img alt="{{ $alt }}" title="{{ $alt }}" src="{{ $src }}"
-          height="{{ $src.Height}}" width="{{ $src.Width }}" class="img-fluid d-block mx-auto">
+          height="{{ $src.Height}}" width="{{ $src.Width }}" class="{{.Site.Params.maciaimage.imgclass}}">
 
     </picture>
 </a>

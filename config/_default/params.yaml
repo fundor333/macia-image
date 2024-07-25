@@ -3,3 +3,4 @@ maciaimage:
   small: 800x
   medium: 1200x
   large: 1500x
+  imgclass: img
