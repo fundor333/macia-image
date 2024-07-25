@@ -10,10 +10,10 @@
 
 {{ $format := cond (eq $src.MediaType.SubType "gif") "" "webp" -}}
 
-{{ $xs := .Site.Params.maciaimage.tiny}}
-{{ $s := .Site.Params.maciaimage.smal}}
-{{ $m := .Site.Params.maciaimage.medium}}
-{{ $l := .Site.Params.maciaimage.large}}
+{{ $xs := .Page.Params.maciaimage.tiny }}
+{{ $s := .Page.Params.maciaimage.smal }}
+{{ $m := .Page.Params.maciaimage.medium }}
+{{ $l := .Page.Params.maciaimage.large }}
 
 {{ $tinyw := default (printf "%s %s" $xs $format) }}
 {{ $smallw := default (printf "%s %s" $s $format) }}
@@ -55,7 +55,7 @@ image size, as Hugo will upscale small images */}}
           srcset="{{with $large.RelPermalink }}{{.}}{{ end }}">
 
       <img alt="{{ $alt }}" title="{{ $alt }}" src="{{ $src }}"
-          height="{{ $src.Height}}" width="{{ $src.Width }}" class="{{.Site.Params.maciaimage.imgclass}}">
+          height="{{ $src.Height}}" width="{{ $src.Width }}" class="{{.Page.Params.maciaimage.imgclass}}">
 
     </picture>
 </a>
