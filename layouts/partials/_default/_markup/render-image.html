@@ -10,10 +10,10 @@
 
 {{ $format := cond (eq $src.MediaType.SubType "gif") "" "webp" -}}
 
-{{xs := .Site.Params.maciaimage.tiny}}
-{{s := .Site.Params.maciaimage.smal}}
-{{m := .Site.Params.maciaimage.medium}}
-{{l := .Site.Params.maciaimage.large}}
+{{ $xs := .Site.Params.maciaimage.tiny}}
+{{ $s := .Site.Params.maciaimage.smal}}
+{{ $m := .Site.Params.maciaimage.medium}}
+{{ $l := .Site.Params.maciaimage.large}}
 
 {{ $tinyw := default (printf "%s %s" $xs $format) }}
 {{ $smallw := default (printf "%s %s" $s $format) }}
