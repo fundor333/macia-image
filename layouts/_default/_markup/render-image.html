@@ -10,10 +10,10 @@
 
 {{ $format := cond (eq $src.MediaType.SubType "gif") "" "webp" -}}
 
-{{ $xs := .Page.Site.Param 'maciaimage.tiny' }}
-{{ $s := .Page.Site.Param 'maciaimage.small' }}
-{{ $m := .Page.Site.Param 'maciaimage.medium' }}
-{{ $l := .Page.Site.Param 'maciaimage.large' }}
+{{ $xs := .Page.Site.Params.maciaimage.tiny }}
+{{ $s := .Page.Site.Params.maciaimage.small }}
+{{ $m := .Page.Site.Params.maciaimage.medium }}
+{{ $l := .Page.Site.Params.maciaimage.large }}
 
 {{ $tinyw := default (printf "%s %s" $xs $format) }}
 {{ $smallw := default (printf "%s %s" $s $format) }}
@@ -23,6 +23,7 @@
 {{/* resize the src image to the given sizes */}}
 {{/* We create a a temp scratch because it`s not available in this context */}}
 {{ $data := newScratch }}
+
 {{ $data.Set "tiny" ($src.Resize $tinyw) }}
 {{ $data.Set "small" ($src.Resize $smallw) }}
 {{ $data.Set "medium" ($src.Resize $mediumw) }}
@@ -30,13 +31,12 @@
 
 {{/* add the processed images to the scratch */}}
 
-{{ $tiny := $data.Get 'tiny' }}
-{{ $small := $data.Get 'small' }}
-{{ $medium := $data.Get 'medium' }}
-{{ $large := $data.Get 'large' }}
+{{ $tiny := $data.Get "tiny" }}
+{{ $small := $data.Get "small" }}
+{{ $medium := $data.Get "medium" }}
+{{ $large := $data.Get "large" }}
 
-{{/* only use images smaller than or equal to the src (original)
-image size, as Hugo will upscale small images */}}
+{{/* only use images smaller than or equal to the src (original) image size, as Hugo will upscale small images */}}
 
 
 <a href="{{ $src.RelPermalink }}">
@@ -55,7 +55,7 @@ image size, as Hugo will upscale small images */}}
           srcset="{{with $large.RelPermalink }}{{.}}{{ end }}">
 
       <img alt="{{ $alt }}" title="{{ $alt }}" src="{{ $src }}"
-          height="{{ $src.Height}}" width="{{ $src.Width }}" class="{{.Page.Site.Param 'maciaimage.imgclass'}}">
+          height="{{ $src.Height}}" width="{{ $src.Width }}" class="{{.Page.Site.Params.maciaimage.imgclass}}">
 
     </picture>
 </a>
