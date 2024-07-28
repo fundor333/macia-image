@@ -54,8 +54,7 @@
       <source media="(min-width: 1600px)"
           srcset="{{with $large.RelPermalink }}{{.}}{{ end }}">
 
-      <img alt="{{ $alt }}" title="{{ $alt }}" src="{{ $src }}"
-          height="{{ $src.Height}}" width="{{ $src.Width }}" class="{{.Page.Site.Params.maciaimage.imgclass}}">
+      <img alt="{{ $alt }}" title="{{ $alt }}" src="{{ $src }}" loading="lazy" decoding="async" height="{{ $src.Height}}" width="{{ $src.Width }}" class="{{.Page.Site.Params.maciaimage.imgclass}}">
 
     </picture>
 </a>
