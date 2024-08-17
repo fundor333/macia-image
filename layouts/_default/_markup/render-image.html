@@ -40,7 +40,7 @@
 
 
 <a href="{{ $src.RelPermalink }}">
-    <picture>
+    <picture class="{{.Page.Site.Params.maciaimage.pictureclass}}">
 
       <source media="(max-width: 376px)"
           srcset="{{with $tiny.RelPermalink }}{{.}}{{ end }}">
